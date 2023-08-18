@@ -2,8 +2,8 @@ import inquirer from 'inquirer';
 import fs from "fs/promises";
 
 
-import {Circle, Triangle, Square} from './lib/shapes.js';
-
+import {Shape, Circle, Triangle, Square} from './lib/shapes.mjs';
+let newObj;
 
 
 
@@ -38,37 +38,50 @@ let {shapeInput, bgColorInput, svgTextInput, textColorInput} = await inquirer
         {
             type: 'input',
             name: 'textColorInput',
-            message: "Enter your text color: ",
+            message: "Enter your text color (color name or hexidecimal color code): ",
             default() {
                 return 'white';
                 },
         }, 
-  ])
-
-   
-    console.log(shapeInput);
-    console.log(bgColorInput);
-    console.log(svgTextInput);
-    console.log(textColorInput);
-    console.log(Circle);
-    console.log(Triangle);
-    console.log(Square);
+  ]) 
 
 
 
 
 
+// console.log(shapeInput);
+// console.log(bgColorInput);
+// console.log(svgTextInput);
+// console.log(textColorInput);
 
 
+switch (shapeInput) {
+    case 'Circle':
+        newObj = new Circle;
+        break;
+    case 'Square':
+        newObj = new Square;
+        break;
+
+    default:
+        newObj = new Triangle;
+        break;
+}
+
+newObj.setColor(bgColorInput);
+newObj.setText(svgTextInput);
+newObj.setTextColor(textColorInput);
+newObj.render();
+writeFile();
 
 
-
-
-
-// FileSystem.writeFile( "shape.svg", example.markUp, function(err){
-//     writeFile('message.txt', data, (err) => {
-//         if(err) {
-//         console.log(err);
-//         }
-//     })
-// })
+function writeFile() {
+fs.writeFile( "./examples/logo.svg", newObj.renderHTML(), function(err){
+    writeFile('message.txt', data, (err) => {
+        if(err) {
+        console.log(err);
+        }
+    })
+})
+console.log('Generated logo.svg');
+}

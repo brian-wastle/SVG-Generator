@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
 import fs from "fs/promises";
 
-let {shapeInput, bgColorInput, svgTextInput, textColorInput } = await inquirer
+let {shapeInput, bgColorInput, svgTextInput, textColorInput} = await inquirer
     .prompt([
         {
             type: 'list',
@@ -38,10 +38,15 @@ let {shapeInput, bgColorInput, svgTextInput, textColorInput } = await inquirer
                 },
         }, 
   ])
-  .then((data) => {
-    
 
-  });
+   
+    console.log(shapeInput);
+    console.log(bgColorInput);
+    console.log(svgTextInput);
+    console.log(textColorInput);
+
+
+
 
 
 

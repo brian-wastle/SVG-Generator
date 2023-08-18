@@ -2,10 +2,8 @@ import inquirer from 'inquirer';
 import fs from "fs/promises";
 
 
-import {Circle, Triangle, Square} from './lib/shapes.mjs';
-// import Circle from './lib/shapes.mjs';
-// import Square from './lib/shapes.mjs';
-// import Triangle from './lib/shapes.mjs';
+import {Circle, Triangle, Square} from './lib/shapes.js';
+
 
 
 
@@ -53,6 +51,8 @@ let {shapeInput, bgColorInput, svgTextInput, textColorInput} = await inquirer
     console.log(svgTextInput);
     console.log(textColorInput);
     console.log(Circle);
+    console.log(Triangle);
+    console.log(Square);
 
 
 

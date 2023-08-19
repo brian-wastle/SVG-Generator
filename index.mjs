@@ -1,11 +1,9 @@
 import inquirer from 'inquirer';
 import fs from "fs/promises";
 
-
-import {Shape, Circle, Triangle, Square} from './lib/shapes.mjs';
+// const Shape = require('./shapes.js');
+import {Circle, Triangle, Square} from './lib/shapes.mjs';
 let newObj;
-
-
 
 let {shapeInput, bgColorInput, svgTextInput, textColorInput} = await inquirer
     .prompt([
@@ -45,16 +43,6 @@ let {shapeInput, bgColorInput, svgTextInput, textColorInput} = await inquirer
         }, 
   ]) 
 
-
-
-
-
-// console.log(shapeInput);
-// console.log(bgColorInput);
-// console.log(svgTextInput);
-// console.log(textColorInput);
-
-
 switch (shapeInput) {
     case 'Circle':
         newObj = new Circle;
@@ -62,7 +50,6 @@ switch (shapeInput) {
     case 'Square':
         newObj = new Square;
         break;
-
     default:
         newObj = new Triangle;
         break;
